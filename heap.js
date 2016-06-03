@@ -8,7 +8,7 @@ module.exports = {
 
 function MinHeap() {
     /* 
-     * Summary: This is a novice implementation of a min (binomial) heap. 
+     * Summary: This is a novice implementation of a min (binary) heap. 
      * I hope it brings you such performance much minimum wow!
      *
      * Limitations: Keys are expected to be numbers (int, float). This
