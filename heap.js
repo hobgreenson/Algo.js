@@ -1,14 +1,23 @@
 
-/* 
- * Summary: This is a novice implementation of a min heap. I hope it brings
- * you such performance much minimum wow!
- *
- * Applications: finding the minimum, priority queue, object localization, 
- * running statistics, etc.
- */
+
+module.exports = {
+    
+    MinHeap: MinHeap 
+
+};
 
 function MinHeap() {
-
+    /* 
+     * Summary: This is a novice implementation of a min (binomial) heap. 
+     * I hope it brings you such performance much minimum wow!
+     *
+     * Limitations: Keys are expected to be numbers (int, float). This
+     * could be fixed by allowing custom comparison function.
+     *
+     * Applications: finding the minimum, priority queue, object localization, 
+     * running statistics, etc.
+     */
+    
     this.data = [];
     
 }
@@ -47,6 +56,14 @@ MinHeap.prototype = {
             this.swap(i, swap_index);
             this.bubble_down(swap_index);
         } else { return; }
+    },
+
+    size: function() {
+        return this.data.length;
+    },
+
+    peek: function() {
+        return this.data[0];
     },
 
     push: function(key, value) {
