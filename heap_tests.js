@@ -1,34 +1,11 @@
 
+var util = require('./utils');
 var MinHeap = require('./heap.js').MinHeap;
 var assert = require('./assert.js').assert;
-var plt = require('./plotter.js');
 
 run_tests();
 
 function run_tests() {
-    
-    var util = {
-    
-        random_int: function(min, max) {
-            return Math.floor(Math.random() * (max - min)) + min;
-        },
-
-        print_heap: function(heap) {
-            var n = heap.data.length;
-            console.log('heap length = ' + n);
-            var i = 0, j = 1, e = 0;
-            while (i < n) {
-                var level = '';
-                for (var k = i; k < j; k++) {
-                    level += k < n ? ' ' + heap.data[k].key : '';
-                }
-                console.log(level);
-                i += Math.pow(2, e);
-                e += 1;
-                j = i + Math.pow(2, e);
-            }
-        }
-    }; 
     
     test_heapsort.call(util);
     test_run_time.call(util);
@@ -60,7 +37,7 @@ function test_heapsort() {
 
     for (var i = 0; i < N_tests; i++) {
         var item = heap.pop();
-        assert(item.key === arr[i], '' + item.key + '  ' + arr[i] + '', true); 
+        assert(item.key === arr[i], item.key + ' = ' + arr[i], true); 
     }
 
 }
