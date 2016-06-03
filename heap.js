@@ -39,21 +39,22 @@ MinHeap.prototype = {
         } else { return; }
     },
 
-    bubble_down: function(i) {
-        var key = this.data[i].key;
-        var j = (i + 1) << 1;
-        var k = j - 1;
+    bubble_down: function(parent) {
+        var key = this.data[parent].key;
+        var child_right = (parent + 1) << 1;
+        var child_left = child_right - 1;
         var swap_index;
         
-        if (this.data[j] && this.data[k]) {
-            swap_index = this.data[j].key < this.data[k].key ? j : k;           
+        if (this.data[child_right] && this.data[child_left]) {
+            swap_index = this.data[child_right].key < this.data[child_left].key ? 
+                         child_right : child_left;
         } 
-        else if (this.data[j]) { swap_index = j; }
-        else if (this.data[k]) { swap_index = k; }
+        else if (this.data[child_right]) { swap_index = child_right; }
+        else if (this.data[child_left])  { swap_index = child_left; }
         else { return; }
         
         if (key > this.data[swap_index].key) {
-            this.swap(i, swap_index);
+            this.swap(parent, swap_index);
             this.bubble_down(swap_index);
         } else { return; }
     },
