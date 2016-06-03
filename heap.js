@@ -30,31 +30,32 @@ MinHeap.prototype = {
         this.data[j] = temp;
     },
 
-    bubble_up: function(i) {
-        if (i === 0) { return; }
-        var j = (i - 1) >> 1;
-        if (this.data[i].key < this.data[j].key) {
-            this.swap(i, j);
-            this.bubble_up(j);
+    bubble_up: function(child_index) {
+        if (child_index === 0) { return; }
+        var parent_index = (child_index - 1) >> 1;
+        if (this.data[child_index].key < this.data[parent_index].key) {
+            this.swap(child_index, parent_index);
+            this.bubble_up(parent_index);
         } else { return; }
     },
 
-    bubble_down: function(parent) {
-        var key = this.data[parent].key;
-        var child_right = (parent + 1) << 1;
+    bubble_down: function(parent_index) {
+        var data = this.data;
+        var key = data[parent_index].key;
+        var child_right = (parent_index + 1) << 1;
         var child_left = child_right - 1;
         var swap_index;
         
-        if (this.data[child_right] && this.data[child_left]) {
-            swap_index = this.data[child_right].key < this.data[child_left].key ? 
+        if (data[child_right] && data[child_left]) {
+            swap_index = data[child_right].key < data[child_left].key ? 
                          child_right : child_left;
         } 
-        else if (this.data[child_right]) { swap_index = child_right; }
-        else if (this.data[child_left])  { swap_index = child_left; }
+        else if (data[child_right]) { swap_index = child_right; }
+        else if (data[child_left])  { swap_index = child_left; }
         else { return; }
         
-        if (key > this.data[swap_index].key) {
-            this.swap(parent, swap_index);
+        if (key > data[swap_index].key) {
+            this.swap(parent_index, swap_index);
             this.bubble_down(swap_index);
         } else { return; }
     },

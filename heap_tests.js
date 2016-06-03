@@ -60,7 +60,7 @@ function test_heapsort() {
 
     for (var i = 0; i < N_tests; i++) {
         var item = heap.pop();
-        assert(item.key === arr[i], '' + item.key + '  ' + arr[i] + '', false); 
+        assert(item.key === arr[i], '' + item.key + '  ' + arr[i] + '', true); 
     }
 
 }
