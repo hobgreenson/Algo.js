@@ -1,12 +1,17 @@
 
 
 module.exports = {
+
+    /* 
+     * TODO: This is probably the wrong way build a Node module.
+     *
+     */
     
-    MinHeap: MinHeap 
+    BinaryMinHeap: BinaryMinHeap 
 
 };
 
-function MinHeap() {
+function BinaryMinHeap() {
     /* 
      * Summary: This is a novice implementation of a min (binary) heap. 
      * I hope it brings you such performance much minimum wow!
@@ -22,7 +27,7 @@ function MinHeap() {
     
 }
 
-MinHeap.prototype = {
+BinaryMinHeap.prototype = {
     
     swap: function(i, j) {
         var temp = this.data[i];
@@ -92,3 +97,4 @@ MinHeap.prototype = {
     */
 
 };
+

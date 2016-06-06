@@ -7,8 +7,8 @@ run_tests();
 
 function run_tests() {
 
-    test_mergesort.call(util);
-
+    //test_mergesort.call(util);
+    test_count_inversions();
 }
 
 
@@ -27,4 +27,10 @@ function test_mergesort() {
     for (var i = 0; i < n; i++) {
         assert(x[i] === y[i], x[i] + ' = ' + y[i], true);
     }
+}
+
+
+function test_count_inversions() {
+    var x = [1,2,4,5,3];
+    console.log(algo.count_inversions(x));
 }
