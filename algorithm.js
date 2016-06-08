@@ -102,26 +102,44 @@ module.exports = {
     quicksort: function(arr) {
         
         /*
-         * - pick a pivot
-         * - rearrange array so that elements left of the pivot are less
-         * and elements right of the pivot are greater: this puts the pivot
-         * in it's "rightful" position.
+         * Summary: uses randomized quicksort algorithm to sort the 
+         * input array in-place.
+         *
+         * Limitations: assumes input array holds numbers. does not implement
+         * some well-known optimizations.
+         *
+         * Applications: sorting
          *
          */
 
-        if (arr.length <= 1) { return arr; }
-        else { sort(arr); }
-
-        function sort(x) {
-            var p = pivot(x);
-            sort(x.slice(0, p));
-            sort(x.slice(p));
+        sort(0, arr.length);
+        
+        function sort(left, right) {
+            if (left < right) {
+                var pivot_index = partition(left, right);
+                sort(left, pivot_index);
+                sort(pivot_index + 1, right);
+            }
         }
         
-        function partition(x, pivot, left, right) {
-                 
+        function partition(left, right) {
+            var p = util.random_int(left, right);
+            if (p !== left) {
+                util.array_swap(arr, p, left);
+            }
+            var pivot = arr[left];
+            for (var i = j = left + 1; j < right; j++) {
+                if (arr[j] < pivot) {
+                    if (i !== j) {
+                        util.array_swap(arr, i, j);
+                    }
+                    i++;
+                } 
+            }
+            var pivot_index = i - 1
+            util.array_swap(arr, left, pivot_index);
+            return pivot_index;
         }
-
     },
 
     heapsort: function(arr) {
