@@ -1,6 +1,6 @@
 
-var util = require('./utils');
-var ds = require('./data_structures.js');
+var util = require('./util');
+var ds = require('./data_structure.js');
 
 run_tests();
 

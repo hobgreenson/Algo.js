@@ -1,4 +1,7 @@
 
+
+var util = require('./util.js');
+
 /*
  * Summary: A collection of methods implementing a variety of
  * algorithms. These algorithms sometimes require data structures defined
@@ -106,7 +109,6 @@ module.exports = {
          *
          */
 
-
         if (arr.length <= 1) { return arr; }
         else { sort(arr); }
 
@@ -118,12 +120,6 @@ module.exports = {
         
         function partition(x, pivot, left, right) {
                  
-        }
-
-        function swap(x, i, j) {
-            var temp = x[i];
-            x[i] = x[j];
-            x[j] = temp;
         }
 
     },

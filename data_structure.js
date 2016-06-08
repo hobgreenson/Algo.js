@@ -1,4 +1,5 @@
 
+var util = require('./util.js');
 
 module.exports = {
 
@@ -27,19 +28,13 @@ function BinaryMinHeap() {
     
 }
 
-BinaryMinHeap.prototype = {
-    
-    swap: function(i, j) {
-        var temp = this.data[i];
-        this.data[i] = this.data[j];
-        this.data[j] = temp;
-    },
+BinaryMinHeap.prototype = { 
 
     bubble_up: function(child_index) {
         if (child_index === 0) { return; }
         var parent_index = (child_index - 1) >> 1;
         if (this.data[child_index].key < this.data[parent_index].key) {
-            this.swap(child_index, parent_index);
+            util.array_swap(this.data, child_index, parent_index);
             this.bubble_up(parent_index);
         } else { return; }
     },
@@ -60,7 +55,7 @@ BinaryMinHeap.prototype = {
         else { return; }
         
         if (key > data[swap_index].key) {
-            this.swap(parent_index, swap_index);
+            util.array_swap(this.data, parent_index, swap_index);
             this.bubble_down(swap_index);
         } else { return; }
     },
@@ -80,7 +75,7 @@ BinaryMinHeap.prototype = {
     },
 
     pop: function() {
-        this.swap(0, this.data.length - 1);
+        util.array_swap(this.data, 0, this.data.length - 1);
         var min_item = this.data.pop();
         if (this.data.length > 0) this.bubble_down(0);
         return min_item;

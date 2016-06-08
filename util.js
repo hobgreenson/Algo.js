@@ -14,6 +14,12 @@ module.exports = {
             return Math.floor(Math.random() * (max - min)) + min;
     },
 
+    array_swap: function(x, i, j) {
+        var temp = x[i];
+        x[i] = x[j];
+        x[j] = temp;
+    },
+
     print_heap: function(heap) {
         var n = heap.data.length;
         console.log('heap length = ' + n);
